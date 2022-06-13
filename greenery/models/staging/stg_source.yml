@@ -1,0 +1,51 @@
+version: 2
+
+sources:
+
+  - name: greenery_source 
+    schema: public
+    database: dbt
+    
+    quoting:
+      database: false
+      schema: false
+      identifier: false
+
+    freshness:
+      warn_after: {count: 24, period: hour}
+      error_after: {count: 48, period: hour}
+
+    tables:
+      - name: addresses
+        loaded_at_field: created_at
+        description: >
+          A dimension table containing addresses 
+      - name: events
+        loaded_at_field: created_at 
+        description: >
+          Log of events records 
+      - name: order_items
+        loaded_at_field: created_at 
+        description: >
+          Log of items ordered, indexed by order_id 
+      - name: orders 
+        loaded_at_field: created_at 
+        description: >
+          Log of order details, indexed by order_id
+      - name: products
+        loaded_at_field: created_at 
+        description: >
+          Listing of products, including price and number in inventory 
+      - name: promos 
+        loaded_at_field: created_at 
+        description: >
+         Listing of promos -- includes both active and inactive promos
+      - name: users
+        loaded_at_field: created_at 
+        description: >
+          Listing of users and users' account details
+ 
+
+
+
+

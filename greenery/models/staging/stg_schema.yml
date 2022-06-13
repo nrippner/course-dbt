@@ -1,0 +1,106 @@
+version: 2
+
+models:
+  - name: addresses
+    loaded_at_field: created_at
+    description: >
+      A dimension table containing addresses 
+    columns:
+      - name: address_id 
+        description: >
+          Primary key. UUID.
+      - name: address 
+      - name: zipcode
+      - name: state 
+        description: >
+          State name - first letter(s) capitalized.
+      - name: country
+        description: >
+          Country name - first letter(s) capitalized
+  - name: events
+    loaded_at_field: created_at 
+    description: >
+      Log of events records 
+    columns:
+      - name: event_id
+        description: >
+          Primary key. UUID.
+      - name: session_id 
+      - name: user_id
+      - name: page_url
+      - name: created_at 
+      - name: event_type 
+      - name: order_id
+      - name: product_id
+  - name: order_items
+    loaded_at_field: created_at 
+    description: >
+      Log of items ordered, indexed by order_id 
+    columns:
+      - name: order_id 
+        description: >
+          Primary key. UUID.
+      - name: product_id 
+      - name: quantity
+  - name: orders 
+    loaded_at_field: created_at 
+    description: >
+      Log of order details, indexed by order_id
+    columns:
+      - name: order_id 
+        description: >
+          Primary key. UUID.
+      - name: user_id 
+      - name: promo_id
+      - name: address_id 
+      - name: created_at 
+      - name: order_cost 
+      - name: shipping_cost 
+      - name: order_total 
+      - name: tracking_id 
+      - name: shipping_service 
+      - name: estimated_delivery_at 
+      - name: delivered at 
+      - name: status 
+  - name: products
+    loaded_at_field: created_at 
+    description: >
+      Listing of products, including price and number in inventory 
+    columns:
+      - name: product_id 
+        description: >
+          Primary key. UUID.
+      - name: name
+      - name: price
+      - name: inventory
+  - name: promos 
+    loaded_at_field: created_at 
+    description: >
+      Listing of promos -- includes both active and inactive promos
+    columns:
+      - name: promo_id 
+        description: >
+          Primary key. UUID.
+      - name: discount 
+      - name: status 
+  - name: users
+    loaded_at_field: created_at 
+    description: >
+      Listing of users and users' account details
+    columns:
+      - name: user_id
+        description: >
+          Primary key. UUID.
+      - name: first_name 
+      - name: last_name 
+      - name: email 
+      - name: phone_number 
+      - name: created_at 
+      - name: updated_at
+      - name: address_id
+
+
+
+
+
+
