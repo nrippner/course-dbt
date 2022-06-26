@@ -1,0 +1,16 @@
+version: 2
+
+models:
+  - name: int_daily_orders
+    description: >
+      An intermediary table aggregating orders data by day
+    columns:
+      - name: order_date_utc
+        description: >
+          date UTC TZ 
+        tests: 
+          - not_null 
+      - name: product_id 
+        tests: 
+          - not_null
+ 
