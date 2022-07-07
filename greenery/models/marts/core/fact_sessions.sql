@@ -40,4 +40,5 @@ SELECT
 FROM unioned u
 JOIN {{ ref('stg_events') }} e 
 USING (session_id)
+WHERE e.event_type = 'page_view'
 GROUP BY 1,2,3
